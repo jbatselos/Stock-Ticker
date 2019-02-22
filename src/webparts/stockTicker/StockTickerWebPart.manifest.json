@@ -19,7 +19,8 @@
     "officeFabricIconFontName": "Page",
     "properties": {
       "description": "stock ticker",
-      "symbol": "1"
+      "symbol": "AAPL"
+    
     }
   }]
 }

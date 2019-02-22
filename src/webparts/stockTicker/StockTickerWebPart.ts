@@ -10,9 +10,8 @@ import { escape } from '@microsoft/sp-lodash-subset';
 
 import styles from './StockTickerWebPart.module.scss';
 import * as strings from 'StockTickerWebPartStrings';
-
+import * as React from 'react';
 export interface IStockTickerWebPartProps {
-  description: string;
   symbol: string;
 }
 
