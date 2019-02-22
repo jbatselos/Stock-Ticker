@@ -1,0 +1,25 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "4d982409-3d94-48ca-bb9d-5304bc402f66",
+  "alias": "StockTickerWebPart",
+  "componentType": "WebPart",
+
+
+  "version": "*",
+  "manifestVersion": 2,
+
+ 
+  "requiresCustomScript": false,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Other" },
+    "title": { "default": "stock ticker" },
+    "description": { "default": "is a stock ticker" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "stock ticker",
+      "symbol": "1"
+    }
+  }]
+}

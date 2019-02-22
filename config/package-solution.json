@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "stockticker-wp-2-client-side-solution",
+    "id": "7c7ab229-7013-4ab5-8cd0-1e1d82102652",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/stockticker-wp-2.sppkg"
+  }
+}
