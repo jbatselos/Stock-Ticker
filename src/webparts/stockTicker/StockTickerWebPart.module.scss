@@ -26,15 +26,25 @@
     @include ms-font-xl;
     color: #000;
   }
-
+  
   .subTitle {
-    @include ms-font-l;
+    font-size: 20px;
+    font-weight:'bold';
     color: #000;
   }
 
+  .other {
+    font: size = 10px;
+    [data-negative] {
+      color: red;
+    }
+
+    color: #000;
+  }
   .description {
-    @include ms-font-l;
+    font-size: 8;
     color: rgb(65, 53, 53);
+
   }
 
   .button {
