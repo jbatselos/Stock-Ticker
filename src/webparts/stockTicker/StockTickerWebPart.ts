@@ -10,7 +10,7 @@ import { escape } from '@microsoft/sp-lodash-subset';
 
 import styles from './StockTickerWebPart.module.scss';
 import * as strings from 'StockTickerWebPartStrings';
-import {Quote, Stock,IStockTickerWebPartProps} from './Stock';
+import {Quote, Stock,IStockTickerWebPartProps, DoesExist} from './Stock';
 import { HttpClientResponse, HttpClient } from '@microsoft/sp-http';
 
 
@@ -34,26 +34,29 @@ export default class StockTickerWebPart extends BaseClientSideWebPart<IStockTick
 
       
     }
-    public getStockData() {
+    public getStockData (symbol: string) {
       //get Quote
       
-      this.context.httpClient.get("https://api.iextrading.com/1.0/stock/" + this.properties.symbol + "/book", HttpClient.configurations.v1)
+      this.context.httpClient.get("https://api.iextrading.com/1.0/stock/" + symbol + "/book", HttpClient.configurations.v1)
       .then((response: HttpClientResponse) => {
           let info = response.json();
           return info.then((obj: Stock) => {
-          // let quote: Quote = obj.quote;
             this.currentQuote = obj.quote;
             this.render();
           });
       });
     }
-
+  
    public render(): void {
-    this.getStockData();
     
-
+    
+    this.getStockData(this.properties.symbol);
+    
+  
     //show
+  
     this.domElement.innerHTML = `
+    
         <div class="${ styles.stockTicker}">
           <div class="${ styles.container}">
             <div class="${ styles.row}">
@@ -69,8 +72,8 @@ export default class StockTickerWebPart extends BaseClientSideWebPart<IStockTick
             </div>
           </div>
         </div>`;
-
-  }
+    
+  } 
 
   protected get dataVersion(): Version {
     return Version.parse('1.0');
@@ -87,7 +90,7 @@ export default class StockTickerWebPart extends BaseClientSideWebPart<IStockTick
             {
               //groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneDropdown('symbol', {
+               /*PropertyPaneDropdown('symbol', {
                   label: "Stock Symbol", selectedKey: 'AAPL',
                   options: [
                     { key: 'AAPL', text: 'AAPL' },
@@ -98,7 +101,11 @@ export default class StockTickerWebPart extends BaseClientSideWebPart<IStockTick
                     { key: 'AA', text: 'AA' }
                   ]
                 })
-
+                */
+               PropertyPaneTextField('symbol', {
+                 label: "Stock Symbol",
+                 
+               })
 
 
               ]
