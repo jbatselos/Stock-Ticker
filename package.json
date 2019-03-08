@@ -19,7 +19,8 @@
     "@types/jquery": "^3.3.29",
     "@types/webpack-env": "1.13.1",
     "json2typescript": "^1.1.1",
-    "jsonp": "^0.2.1"
+    "jsonp": "^0.2.1",
+    "selenium-webdriver": "^4.0.0-alpha.1"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "1.7.1",
