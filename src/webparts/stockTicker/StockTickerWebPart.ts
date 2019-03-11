@@ -2,30 +2,18 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField,
-  PropertyPaneDropdown,
-  PropertyPaneFieldType
+  PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
 
 import styles from './StockTickerWebPart.module.scss';
 import * as strings from 'StockTickerWebPartStrings';
-import {Quote, Stock,IStockTickerWebPartProps, DoesExist} from './Stock';
+import {Quote, Stock,IStockTickerWebPartProps} from './Stock.Model';
 import { HttpClientResponse, HttpClient } from '@microsoft/sp-http';
 
 
 export default class StockTickerWebPart extends BaseClientSideWebPart<IStockTickerWebPartProps> {
 
-  /*
-    public async getStockData(){
-      var response = await fetch("https://api.iextrading.com/1.0/stock/aapl/book");
-      var data = await response.json();
-      let stock:Stock = await data();
-      let quote:Quote = stock.quote;
-      0;
-      return quote;
-    }
-    */
 
    private currentQuote: Quote;
 
@@ -61,7 +49,7 @@ export default class StockTickerWebPart extends BaseClientSideWebPart<IStockTick
           <div class="${ styles.container}">
             <div class="${ styles.row}">
               <div class="${ styles.column}">
-                <p class="${ styles.title}">${this.currentQuote ? this.currentQuote.companyName : ""} ( ${escape(this.properties.symbol)} )</p>
+                <p class="${ styles.title}">${this.currentQuote ? this.currentQuote.companyName : ""} ( ${escape(this.properties.symbol.toUpperCase())} )</p>
                 <span class="${ styles.subTitle}">${this.currentQuote ? this.currentQuote.latestPrice : ""}  &ensp; </span> 
                 <e class="${ styles.other}">   ${this.currentQuote ? this.currentQuote.change : ""} (${(this.currentQuote ? this.currentQuote.changePercent * 100 : 0).toFixed(3)}%)</e>
                 <p class="${ styles.description}">Lastest Update: ${ this.currentQuote ? new Date(this.currentQuote.latestUpdate.valueOf()) : ""}</p>
