@@ -1,3 +1,5 @@
+
+
 import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
@@ -10,10 +12,10 @@ import styles from './StockTickerWebPart.module.scss';
 import * as strings from 'StockTickerWebPartStrings';
 import {Quote, Stock,IStockTickerWebPartProps} from './Stock.Model';
 import { HttpClientResponse, HttpClient } from '@microsoft/sp-http';
+import * as appInsights from 'applicationinsights' ;
 
 
 export default class StockTickerWebPart extends BaseClientSideWebPart<IStockTickerWebPartProps> {
-
 
    private currentQuote: Quote;
 
@@ -36,15 +38,15 @@ export default class StockTickerWebPart extends BaseClientSideWebPart<IStockTick
     }
   
    public render(): void {
-    
-    
+
+
     this.getStockData(this.properties.symbol);
     
   
     //show
   
     this.domElement.innerHTML = `
-    
+        
         <div class="${ styles.stockTicker}">
           <div class="${ styles.container}">
             <div class="${ styles.row}">

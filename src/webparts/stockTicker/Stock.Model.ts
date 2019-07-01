@@ -1,6 +1,5 @@
 
 
-
 export interface Stock {
     quote: Quote;
     bids: any[];
