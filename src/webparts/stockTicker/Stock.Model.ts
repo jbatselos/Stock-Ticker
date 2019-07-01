@@ -1,6 +1,5 @@
 
 
-
 export interface Stock {
     quote: Quote;
     bids: any[];
@@ -58,3 +57,12 @@ export interface Stock {
     name: string;
     dataNeeded: Quote;
   }
+
+  export interface DoesExist {
+    symbol: string;
+    name: string;
+    date: string;
+    isEnabled: boolean;
+    type: string;
+    iexId: string;
+}
